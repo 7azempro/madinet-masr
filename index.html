@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريع مدينة مصر</title>
+    <link rel="icon" href="src/arrow.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet"><style>
+        :root {
+            --background-color-light: #f3f4f6;
+            --background-color-dark: #1e1e1e;
+            --text-color-light: #333;
+            --text-color-dark: #f3f4f6;
+            --primary-color: #A52C45;
+            --secondary-color: #7a1f30;
+            --form-background-light: #fff;
+            --form-background-dark: #333;
+        }
+
+        body {
+            font-family: 'Readex Pro', sans-serif;
+            background-color: var(--background-color-light);
+            color: var(--text-color-light);
+            text-align: center;
+            padding: 20px;
+            margin: 0;
+            direction: rtl;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode {
+            background-color: var(--background-color-dark);
+            color: var(--text-color-dark);
+        }
+
+        .logo img {
+            flex-wrap: wrap;
+            width: 150px;
+            max-width: 100%;
+            height: auto;
+            padding: 10px;
+        }
+
+        .dark-mode .logo img {
+            width: 150px;
+            max-width: 100%;
+            height: auto;
+            background-color: rgb(255, 255, 255);
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        @keyframes logoAnimation {
+            0% {
+                transform: scale(1);
+            }
+
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero {
+            margin: 30px 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 2s ease-in 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .projects {
+            margin: 30px 0;
+        }
+
+        .projects h2 {
+            font-size: 2em;
+            color: var(--primary-color);
+        }
+
+        .dark-mode .projects p {
+            font-size: 2em;
+            color: var(--primary-color);
+            color: #ddd;
+        }
+
+        .projects .project {
+            margin: 20px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            background-color: var(--form-background-light);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .dark-mode .projects .project {
+            border: 1px solid rgba(109, 109, 109, 0.541);
+            background-color: var(--form-background-dark);
+            color: var(--text-color-dark);
+        }
+
+        .projects .project img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .projects .project h3 {
+            margin: 10px 0;
+            font-size: 1.5em;
+        }
+
+        .projects .project p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .projects .project button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            font-family: "Readex Pro";
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .projects .project button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .contact-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+            padding: 20px;
+            background-color: var(--form-background-light);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            width: 500px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode .contact-form {
+            background-color: var(--form-background-dark);
+            color: var(--text-color-dark);
+        }
+
+        .contact-form h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            font-family: "Readex Pro";
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            background-color: #f9f9f9;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .dark-mode .contact-form input,
+        .dark-mode .contact-form textarea {
+            background-color: var(--form-background-dark);
+            color: var(--text-color-dark);
+            border: 1px solid #555;
+        }
+
+        .contact-form input[type="submit"] {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .contact-form input[type="submit"]:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .contact-form .close-btn {
+            background-color: transparent;
+            color: #333;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .dark-mode .contact-form .close-btn {
+            color: var(--text-color-dark);
+        }
+
+        .contact-info {
+            margin: 30px 0;
+            font-size: 1em;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+
+        .social-media {
+            margin: 20px 0;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+            color: var(--secondary-color);
+        }
+        
+
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .dark-mode footer a {
+            color: var(--text-color-dark);
+        }
+
+        /* Slider Styles */
+        .slider {
+            position: relative;
+            max-width: 100%;
+            margin: 20px auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            height: auto;
+        }
+
+        .slides {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            flex: 1 0 100%;
+            box-sizing: border-box;
+            height: auto;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
+
+            .projects .project h3 {
+                font-size: 1.2em;
+            }
+
+            .contact-form h2 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero p {
+                font-size: 1.2em;
+            }
+
+            .projects .project h3 {
+                font-size: 1.5em;
+            }
+
+            .contact-form h2 {
+                font-size: 2em;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            body {
+                padding: 50px;
+            }
+
+            .hero h1 {
+                font-size: 4em;
+            }
+
+            .hero p {
+                font-size: 1.8em;
+            }
+
+            .projects .project h3 {
+                font-size: 2em;
+            }
+
+            .contact-form h2 {
+                font-size: 2.5em;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            font-family: "Readex Pro";
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 2000;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+</head>
+<header>    <div class="button-container"><button class="dark-mode-toggle" id="darkModeToggle">تفعيل الوضع الليلي</button></div>
+</header>
+<body>
+    <div class="logo">
+        <img src="src/madinet-masr-logo.svg" alt="Madinet Masr Logo">
+    </div>
+    <div class="hero">
+        <h1>مشاريع مدينة مصر</h1>
+        <p>مشاريع متميزة في مختلف مناطق مصر توفر لك الفرصة لتعيش حياة مريحة وآمنة.</p>
+    </div>
+
+    <div class="slider">
+        <div class="slides">
+            <div class="slide"><img src="src/TajCity.jpg" alt="Project 1"></div>
+            <div class="slide"><img src="src/Sarai.png" alt="Project 2"></div>
+            <div class="slide"><img src="src/Zahw.webp" alt="Project 3"></div>
+        </div>
+    </div>
+
+    <div class="projects">
+        <h2>مشاريعنا القادمة</h2>
+        <div class="project">
+            <img src="src/TajCity.jpg" alt="Project 1">
+            <h3>تاج سيتي</h3>
+            <p>وجهة اجتماعية فاخرة متعددة الاستخدامات على مساحة 3.8 مليون متر مربع بأبرز المواقع الاستراتيجية بالقرب من مطار القاهرة الدولي وأحياء مصر الجديدة ومدينة مصر، ويربط بشكل محوري بين مدن محافظة القاهرة ومنطقة القاهرة الجديدة</p>
+            <button class="open-form-btn">احجز وحدتك الآن</button>
+        </div>
+        <div class="project">
+            <img src="src/Sarai.png" alt="Project 2">
+            <h3>سراي</h3>
+            <p>مشروع سكني متكامل متعدد الاستخدامات على مساحة 5.5 مليون متر مربع بموقع استراتيجي على طريق القاهرة السويس ومحور الأمل على مقربة الجامعة الأمريكية بالقاهرة الجديدة والطريق الدائري والعاصمة الإدارية الجديدة</p>
+            <button class="open-form-btn">احجز وحدتك الآن</button>
+        </div>
+        <div class="project">
+            <img src="src/Zahw.webp" alt="Project 3">
+            <h3>زهو</h3>
+            <p>يتمتع مشروع "زهو" بموقع استراتيجي متميز في غرب أسيوط أمام جامعة بدر، على بعد 6 دقائق من مطار أسيوط، و15 دقيقة عن وسط المحافظة. ويضم "زهو" منطقة تجارية تقع بموازاة الطريق الرئيسي على مساحة 15 ألف متر مربع تقريبًا، بالإضافة إلى نادي رياضي بمساحة 20 ألف متر مربع، وهو ما سيحقق تجربة سكنية متميزة للعملاء مع توفير أحدث أنماط الحياة العصرية.</p>
+            <button class="open-form-btn">احجز وحدتك الآن</button>
+        </div>
+    </div>
+
+    <div id="overlay" class="overlay"></div>
+
+    <div class="contact-form" id="contactFormPopup">
+        <button class="close-btn" onclick="closeForm()">×</button>
+        <h2>تواصل معنا</h2>
+        <form action="submit_form.php" method="post">
+            <input type="text" name="name" placeholder="الاسم" required>
+            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+            <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+            <textarea name="message" rows="5" placeholder="أدخل رسالتك" required></textarea>
+            <input type="submit" value="إرسال">
+        </form>
+    </div>
+
+    <div class="contact-info">
+        <p>للمزيد من المعلومات، يمكنكم التواصل معنا عبر: <a href="mailto:info@theglobalhub.net">info@madinetmasr.com</a></p>
+    </div>
+
+    <div class="social-media">
+        <a href="https://www.facebook.com/madinetmasr.dev">فيسبوك</a> |
+        <a href="#">تويتر</a> |
+        <a href="#">إنستجرام</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 جميع الحقوق محفوظة لشركة مدينة مصر. | <a href="#">سياسة الخصوصية</a></p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelector('.slides');
+        const openFormBtns = document.querySelectorAll('.open-form-btn');
+        const contactFormPopup = document.getElementById("contactFormPopup");
+        const overlay = document.getElementById("overlay");
+        const darkModeToggle = document.getElementById("darkModeToggle");
+        const body = document.body;
+
+        function showNextSlide() {
+            currentIndex = (currentIndex) % slides.children.length;
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        setInterval(showNextSlide, 3000);
+
+        openFormBtns.forEach(btn => {
+            btn.addEventListener('click', openForm);
+        });
+
+        function openForm() {
+            contactFormPopup.style.display = "block";
+            overlay.style.display = "block";
+        }
+
+        function closeForm() {
+            contactFormPopup.style.display = "none";
+            overlay.style.display = "none";
+        }
+
+        overlay.addEventListener('click', closeForm);
+
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            darkModeToggle.textContent = body.classList.contains('dark-mode') ? "تعطيل الوضع الليلي" : "تفعيل الوضع الليلي";
+        });
+    </script>
+</body>
+
+</html>
